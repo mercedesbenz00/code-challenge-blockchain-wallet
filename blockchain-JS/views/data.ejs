@@ -1,0 +1,15 @@
+<h1><%= title %></h1>
+<p>
+    <a role='button' href="/">Back</a>
+</p>
+<h2>The latest block</h2>
+<div>
+    <b>Block's timestamp:</b>
+    <%= new Date(latestBlock.timestamp).toDateString() %>
+</div>
+<div>
+    <b>Block's hash:</b>
+    <%= latestBlock.hash %>
+</div>
+
+<% include ../partials/log-table %>

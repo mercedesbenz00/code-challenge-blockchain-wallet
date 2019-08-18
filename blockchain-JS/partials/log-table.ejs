@@ -1,0 +1,48 @@
+<section class="table" aria-label="blockchain table">
+    <h2>Logs</h2>
+    <header>
+        <div class="header-cell">from</div>
+        <div class="header-cell">to</div>
+        <div class="header-cell">amount</div>
+        <div class="header-cell">payload</div>
+        <div class="header-cell">timestamp</div>
+        <div class="header-cell">signature</div>
+    </header>
+    <% latestBlock.transactions.forEach(function(transaction) { %>
+    <section class="table__row">
+        <div class="table__cell">
+            <details>
+                <summary>
+                    <p><%= transaction.fromAddress %></p>
+                </summary>
+                <%= transaction.fromAddress %>
+            </details>
+        </div>
+        <div class="table__cell">
+            <details>
+                <summary>
+                    <p><%= transaction.toAddress %></p>
+                </summary>
+                <%= transaction.toAddress %>
+            </details>
+        </div>
+        <div class="table__cell">
+            <p><%= transaction.amount %></p>
+        </div>
+        <div class="table__cell">
+            <p><%= transaction.payload %></p>
+        </div>
+        <div class="table__cell">
+            <p><%= new Date(transaction.timestamp).toDateString() %></p>
+        </div>
+        <div class="table__cell">
+            <details>
+                <summary>
+                    <p><%= transaction.signature %></p>
+                </summary>
+                <%= transaction.signature %>
+            </details>
+        </div>
+    </section>
+    <% }); %>
+</section>

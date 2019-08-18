@@ -1,0 +1,28 @@
+<h1><%= title %></h1>
+<section class="dashboard-container">
+    <section class="dashboard">
+        <section class="card">
+            <header>
+                Billing amount
+            </header>
+            <section>
+                <%= billingAmount %>
+            </section>
+            <a href="#" onclick="window.print();return false;">Print bill</a>
+        </section>
+
+        <section class="card">
+            <header>
+                My Balance
+            </header>
+            <section>
+                <%= myBalance %>
+            </section>
+            <a href="#">Checkout my balance</a>
+        </section>
+
+        <a class="button" role='button' href="/data">Look up full logs</a>
+    </section>
+
+    <% include ../partials/log-table %>
+</section>

@@ -1,0 +1,10 @@
+@media print {
+    a[role="button"] {
+        display: none;
+    }
+
+    .dashboard-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

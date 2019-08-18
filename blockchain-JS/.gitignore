@@ -1,0 +1,6 @@
+#Packages
+node_modules/
+
+#System
+**/.DS_Store
+**/.vscode
