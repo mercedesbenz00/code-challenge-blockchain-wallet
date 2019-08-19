@@ -1,35 +1,66 @@
-const miner = require('../controller/miner.js');
+// const miner = require('../controller/miner.js');
+// miner.initTransactions()
 
-module.exports = function(app) {
+module.exports = function(app, miner) {
     app.get('/', (req, res) => {
-        return res.render('dashboard', {
-            title: 'Dashboard',
-            billingAmount: miner.billingAmount + ' coins',
-            latestBlock: miner.latestBlock,
-            myBalance: miner.myBalance + ' coins',
-          }, console.log('Visited page: Dashboard.'));
+      console.log('Visited page: Dashboard.')
+
+      let a, b, coins
+      console.log(miner.mid)
+      b = miner.getLatestBlock()
+      a =  miner.getTheirBalance() + ' coins'
+      c = miner.getMyBalance() + ' coins'
+
+      let dashboardData = {
+      title: 'Dashboard',
+        billingAmount: a,
+        latestBlock: b,
+        myBalance: c,
+      }  
+
+      console.log(dashboardData)
+      return res.render('dashboard', dashboardData);
     });
 
     app.get('/data', (req, res) => {
         return res.render('data', {
             title: 'Data',
-            latestBlock: miner.latestBlock,
+            latestBlock: miner.getLatestBlock(),
           }, console.log('Visited page: Data.'));
     });
 
-    app.get('/print', (req, res) => {
-        return res.send('data', {
-            title: 'Bill',
-            billingAmount: miner.billingAmount + ' coins',
-            latestBlock: miner.latestBlock,
-            myBalance: miner.myBalance + ' coins',
-          }, function() {
-            return res.sendFile('data', {
-                title: 'Bill',
-                billingAmount: miner.billingAmount + ' coins',
-                latestBlock: miner.latestBlock,
-                myBalance: miner.myBalance + ' coins',
-              }
-          });
+
+    app.get('/mine', (req, res) => {
+      miner.initTransactions()
+
+      let a, b, coins
+      console.log(miner.mid)
+      b = miner.getLatestBlock()
+      a =  miner.getTheirBalance() + ' coins'
+      c = miner.getMyBalance() + ' coins'
+
+      let dashboardData = {
+      title: 'mined',
+        billingAmount: a,
+        latestBlock: b,
+        myBalance: c,
+      }  
+
+      return res.render('dashboard', dashboardData);
     });
+    // app.get('/print', (req, res) => {
+    //     return res.send('data', {
+    //         title: 'Bill',
+    //         billingAmount: miner.billingAmount + ' coins',
+    //         latestBlock: miner.latestBlock,
+    //         myBalance: miner.myBalance + ' coins',
+    //       }, function() {
+    //         return res.sendFile('data', {
+    //             title: 'Bill',
+    //             billingAmount: miner.billingAmount + ' coins',
+    //             latestBlock: miner.latestBlock,
+    //             myBalance: miner.myBalance + ' coins',
+    //           }
+    //       });
+    // });
 }
