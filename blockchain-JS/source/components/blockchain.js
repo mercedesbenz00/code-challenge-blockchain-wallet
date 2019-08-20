@@ -60,7 +60,7 @@ class Block {
             this.hash = this.calculateHash();
         }
 
-        console.log("Block mined: " + this.hash);
+        console.log('Block mined: ' + this.hash);
     }
 
     hasValidTransactions(){
@@ -84,7 +84,7 @@ class Blockchain{
     }
 
     createGenesisBlock() {
-        return new Block("01.01.2019", "Genesis block", "0");
+        return new Block('01.01.2019', 'Genesis block', '0');
     }
 
     getLatestBlock() {
@@ -99,7 +99,7 @@ class Blockchain{
         let block = new Block(Date.now(), this.pendingTransactions, this.getLatestBlock().hash);
         block.mineBlock(this.difficulty);
 
-        console.log("Block successfully mined!");
+        console.log('Block successfully mined!');
         this.chain.push(block);
 
         this.pendingTransactions = [];

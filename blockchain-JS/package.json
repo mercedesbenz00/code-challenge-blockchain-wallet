@@ -4,7 +4,9 @@
   "description": " coding challenge",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt && jest",
+    "test:coverage": "jest --ci --reporters=default --coverage",
+    "start": "nodemon server.js"
   },
   "keywords": [
     "blockchain"
@@ -17,5 +19,14 @@
     "elliptic": "^6.5.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.0",
+    "grunt": "^1.0.4",
+    "grunt-eslint": "^22.0.0",
+    "jest": "^24.9.0",
+    "load-grunt-tasks": "^5.1.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
