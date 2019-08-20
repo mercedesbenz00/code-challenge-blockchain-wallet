@@ -4,7 +4,11 @@
 Run `npm install` inside the Blockchain-JS folder.
 
 ## Start
-Run `node main.js` to start.
+Run `npm run start` to start.
+
+## test
+Run `npm run test` to test.
+Run `npm run test:coverage` to test with coverage.
 
 ## Docker
 Run `./start.sh` to start a docker container.
