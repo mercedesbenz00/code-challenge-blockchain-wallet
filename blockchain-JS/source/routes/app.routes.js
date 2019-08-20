@@ -1,24 +1,18 @@
-// const miner = require('../controller/miner.js');
-// miner.initTransactions()
-
 module.exports = function(app, miner) {
     app.get('/', (req, res) => {
-      console.log('Visited page: Dashboard.')
+      console.log('Visited page: Dashboard.');
 
-      let a, b, coins
-      console.log(miner.mid)
-      b = miner.getLatestBlock()
-      a =  miner.getTheirBalance() + ' coins'
-      c = miner.getMyBalance() + ' coins'
+      const b = miner.getLatestBlock();
+      const a =  miner.getTheirBalance() + ' coins';
+      const c = miner.getMyBalance() + ' coins';
 
       let dashboardData = {
       title: 'Dashboard',
         billingAmount: a,
         latestBlock: b,
         myBalance: c,
-      }  
+      };
 
-      console.log(dashboardData)
       return res.render('dashboard', dashboardData);
     });
 
@@ -31,36 +25,20 @@ module.exports = function(app, miner) {
 
 
     app.get('/mine', (req, res) => {
-      miner.initTransactions()
+      miner.initTransactions();
 
-      let a, b, coins
-      console.log(miner.mid)
-      b = miner.getLatestBlock()
-      a =  miner.getTheirBalance() + ' coins'
-      c = miner.getMyBalance() + ' coins'
+      let a, b, c;
+      b = miner.getLatestBlock();
+      a =  miner.getTheirBalance() + ' coins';
+      c = miner.getMyBalance() + ' coins';
 
       let dashboardData = {
       title: 'mined',
         billingAmount: a,
         latestBlock: b,
         myBalance: c,
-      }  
+      };
 
       return res.render('dashboard', dashboardData);
     });
-    // app.get('/print', (req, res) => {
-    //     return res.send('data', {
-    //         title: 'Bill',
-    //         billingAmount: miner.billingAmount + ' coins',
-    //         latestBlock: miner.latestBlock,
-    //         myBalance: miner.myBalance + ' coins',
-    //       }, function() {
-    //         return res.sendFile('data', {
-    //             title: 'Bill',
-    //             billingAmount: miner.billingAmount + ' coins',
-    //             latestBlock: miner.latestBlock,
-    //             myBalance: miner.myBalance + ' coins',
-    //           }
-    //       });
-    // });
-}
+};

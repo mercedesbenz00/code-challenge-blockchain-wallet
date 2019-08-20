@@ -4,7 +4,7 @@
   "description": " coding challenge",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "grunt && jest",
     "test:coverage": "jest --ci --reporters=default --coverage",
     "start": "nodemon server.js"
   },
