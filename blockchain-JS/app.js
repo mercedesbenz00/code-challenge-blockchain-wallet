@@ -7,16 +7,16 @@ const app = express();
 
 
 // Initiating
-const {Miner} = require('./source/components/miner')
+const {Miner} = require('./lib/components/miner')
 
 const miner = new Miner();
 miner.initTransactions();
 
 // Setup Views
 app.set('view engine', 'ejs');
-app.set('views', __dirname + '/source/views');
+app.set('views', __dirname + '/lib/views');
 app.use(expressLayouts);
-require('./source/routes/app.routes.js')(app, miner);
-app.use(express["static"](path.join(__dirname, '/source/css')));
+require('./lib/routes/app.routes.js')(app, miner);
+app.use(express["static"](path.join(__dirname, '/lib/css')));
 
 module.exports = app;

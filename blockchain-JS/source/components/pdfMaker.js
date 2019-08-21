@@ -1,7 +1,16 @@
 const fs = require('fs');
 const PDFDocument = require('pdfmake');
 
-class PDFMaker {
+/**
+ * Creates PDF with dynamic data
+ * @example 
+ * let pdfMaker = new PDFMaker(minaCoinData);
+ * pdfMaker.createPDF();
+ */
+export class PDFMaker {
+    /**
+     * @param {Object} minaCoinData
+    */
     constructor(minaCoinData) {
         const fonts = {
             Roboto: {
@@ -17,6 +26,11 @@ class PDFMaker {
         this.options = {};
     }
 
+    /**
+     * Creates the table and styling for the PDF
+     * @todo Document Builder Pattern fits here
+     * @return {undefined}
+     */
     defineDocument () {
         // TODO Document Builder Pattern fits here
         const content = {};
@@ -42,9 +56,12 @@ class PDFMaker {
         })
         this.definitions.content = [];
         this.definitions.content.push(content);
-
     }
 
+    /**
+     * Creates the document
+     * @return {any}
+     */
     createPDF() {
         this.defineDocument();
         const output = this.document.createPdfKitDocument(this.definitions, this.options);
@@ -52,5 +69,3 @@ class PDFMaker {
         return output.end(); // finalizes document
     }
 }
-
-module.exports.PDFMaker = PDFMaker;

@@ -4,9 +4,11 @@
   "description": " coding challenge",
   "main": "server.js",
   "scripts": {
+    "build": "babel source --out-dir lib --source-maps inline --copy-files",
     "test": "grunt && jest",
     "test:coverage": "jest --ci --reporters=default --coverage",
-    "start": "nodemon server.js"
+    "start": "nodemon babel-node server.js ",
+    "esdoc": "node ./node_modules/.bin/esdoc"
   },
   "keywords": [
     "blockchain"
@@ -22,6 +24,12 @@
     "pdfmake": "^0.1.58"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^6.2.0",
     "grunt": "^1.0.4",
     "grunt-eslint": "^22.0.0",
@@ -29,5 +37,15 @@
     "load-grunt-tasks": "^5.1.0",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2"
-  }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "esmodules": true
+          }
+        }]
+    ]}
 }

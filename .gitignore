@@ -9,4 +9,5 @@ node_modules/
 
 #App
 **/coverage/
-**/pdf/
+**/docs/
+**/lib/

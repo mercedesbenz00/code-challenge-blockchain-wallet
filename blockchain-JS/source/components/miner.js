@@ -6,18 +6,14 @@ const ec = new EC('secp256k1');
 
 /**
  * Minacoin Transaction Manager
- * @class Miner
- * @property {string} myWalletAddress
- * @property {ec.Keypair} myKey
- * @property {string} theirWalletAddress
- * @property {Blockchain} minaCoin
- * @method getCycles
- * @method sendTransaction
- * @method getLatestBlock
- * @method getTheirBalance
- * @method initTransactions
+ * @example 
+ * let miner = new Miner();
+ * miner.initTransactions();
  */
-class Miner {
+export class Miner {
+    /**
+     * Constructor: Setting up Miner
+     */
     constructor() {
         const myKey = ec.keyFromPrivate('874721b0cfd73d79c76c50d5b2ee59f7d9fe9c5743bc45c015c713903b46b7c4');
         this.myWalletAddress = myKey.getPublic('hex');
@@ -28,9 +24,11 @@ class Miner {
         this.minaCoin = new Blockchain(); 
     }
 
-/**
- * @summary Gets cycles from files in JSON format
- */
+    /**
+     * Gets cycles from files in JSON format
+     * @todo Here could be a logger
+     * @return {undefined}
+     */
     getCycles() {
         try {
             const folderName = '../data/';
@@ -48,12 +46,9 @@ class Miner {
     }
 
     /**
-     * @summary Sends a transaction
-     * @param payload contains a string of a cycle
-     * @fires sendTransaction
-     * @fires Transaction.signTransaction
-     * @fires minaCoin.addTransaction
-     * @returns undefined
+     * Sends a transaction
+     * @param {string} payload Contains a string of a cycle
+     * @return {undefined}
      */
     sendTransaction (payload) {
         if(payload === undefined || payload === '') {
@@ -66,29 +61,32 @@ class Miner {
 
     /**
      * @summary Gets the latest Block
-     * @returns Block
+     * @return {Block}
      */
     getLatestBlock () {
         return this.minaCoin.getLatestBlock();
     }
 
     /**
-     * @summary Gets user's balance
-     * @returns number
+     * Gets user's balance
+     * @return {number}
      */
     getMyBalance () {
         return this.minaCoin.getBalanceOfAddress(this.myWalletAddress);
     }
     
      /**
-     * @summary Gets other user's balance
-     * @returns number
+     * Gets other user's balance
+     * @return {number}
      */
     getTheirBalance () {
         return this.minaCoin.getBalanceOfAddress(this.theirWalletAddress);
     }
 
-    /*  */
+    /** 
+     * Prepares data for view
+     * @return {Object}
+     */
     getData() {
         return {
             theirBalance: this.getTheirBalance(),
@@ -99,10 +97,10 @@ class Miner {
 
     /**
      * @summary Initiates transaction
-     * @fires getCycles
-     * @fires sendTransaction
-     * @fires minaCoin.minePendingTransactions
-     * @returns undefined
+     * @emits getCycles
+     * @emits sendTransaction
+     * @emits minaCoin.minePendingTransactions
+     * @return {undefined}
      */
     initTransactions() {
         const cycles = this.getCycles();
@@ -116,6 +114,3 @@ class Miner {
         this.minaCoin.minePendingTransactions(this.myWalletAddress);
     }
 }
-
-module.exports.Miner = Miner;
-

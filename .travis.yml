@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- "12"
+
+script:
+  - cd blockchain-JS
+  - npm install
+  - npm run build
+  - echo run test
+  - npm run test:coverage
+  - npm run esdoc
+  - bash <(curl -s https://codecov.io/bash) -t $CODECOV_SECRET
