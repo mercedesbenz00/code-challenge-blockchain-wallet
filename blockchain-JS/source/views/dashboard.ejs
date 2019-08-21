@@ -6,9 +6,10 @@
                 Billing amount
             </header>
             <section>
-                <%= billingAmount %>
+                <%= minaCoinData.theirBalance + ' coins' %>
             </section>
-            <a href="#" onclick="window.print();return false;">Print bill</a>
+            <!-- <a href="#" onclick="window.print();return false;">Print bill</a> -->
+            <a href="/print">Print bill</a>
         </section>
 
         <section class="card">
@@ -16,7 +17,7 @@
                 My Balance
             </header>
             <section>
-                <%= myBalance %>
+                <%= minaCoinData.myBalance + ' coins' %>
             </section>
             <a href="#">Checkout my balance</a>
         </section>

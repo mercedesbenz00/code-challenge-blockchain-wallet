@@ -5,6 +5,7 @@ const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
 /**
+ * Minacoin Transaction Manager
  * @class Miner
  * @property {string} myWalletAddress
  * @property {ec.Keypair} myKey
@@ -16,7 +17,7 @@ const ec = new EC('secp256k1');
  * @method getTheirBalance
  * @method initTransactions
  */
-class Miner{
+class Miner {
     constructor() {
         const myKey = ec.keyFromPrivate('874721b0cfd73d79c76c50d5b2ee59f7d9fe9c5743bc45c015c713903b46b7c4');
         this.myWalletAddress = myKey.getPublic('hex');
@@ -85,6 +86,15 @@ class Miner{
      */
     getTheirBalance () {
         return this.minaCoin.getBalanceOfAddress(this.theirWalletAddress);
+    }
+
+    /*  */
+    getData() {
+        return {
+            theirBalance: this.getTheirBalance(),
+            myBalance: this.getMyBalance(),
+            latestBlock: this.getLatestBlock()
+        };
     }
 
     /**

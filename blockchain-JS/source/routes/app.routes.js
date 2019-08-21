@@ -1,42 +1,38 @@
+const {PDFMaker} = require('../components/pdfMaker');
+
 module.exports = function(app, miner) {
     app.get('/', (req, res) => {
       console.log('Visited page: Dashboard.');
-
-      const b = miner.getLatestBlock();
-      const a =  miner.getTheirBalance() + ' coins';
-      const c = miner.getMyBalance() + ' coins';
+      const minaCoinData = miner.getData();
+      const pdf = new PDFMaker(minaCoinData)
+      pdf.createPDF();
 
       let dashboardData = {
-      title: 'Dashboard',
-        billingAmount: a,
-        latestBlock: b,
-        myBalance: c,
+        title: 'Wallet',
+        minaCoinData: minaCoinData
       };
 
       return res.render('dashboard', dashboardData);
     });
 
+    app.get('/print', (req, res) => {
+      return res.download('source/pdf/billing.pdf');
+    });
+
     app.get('/data', (req, res) => {
         return res.render('data', {
             title: 'Data',
-            latestBlock: miner.getLatestBlock(),
+            minaCoinData: miner.getData()
           }, console.log('Visited page: Data.'));
     });
 
-
+    // refresh to show how much you would mine
     app.get('/mine', (req, res) => {
       miner.initTransactions();
 
-      let a, b, c;
-      b = miner.getLatestBlock();
-      a =  miner.getTheirBalance() + ' coins';
-      c = miner.getMyBalance() + ' coins';
-
       let dashboardData = {
-      title: 'mined',
-        billingAmount: a,
-        latestBlock: b,
-        myBalance: c,
+        title: 'Dashboard',
+        minaCoinData: miner.getData()
       };
 
       return res.render('dashboard', dashboardData);
