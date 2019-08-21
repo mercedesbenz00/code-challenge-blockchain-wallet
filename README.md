@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/BirgitPohl/zkSystemsCodeChallenge/branch/master/graph/badge.svg?token=fHKv8yGlKW)](https://codecov.io/gh/BirgitPohl/zkSystemsCodeChallenge)
 
 
-# Code Challange: Blockchain
+# Code Challenge: Blockchain
 
 Check out your wallet and mine minacoins.
 
