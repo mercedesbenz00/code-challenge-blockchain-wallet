@@ -29,7 +29,7 @@ module.exports = function(app, miner) {
      * @return {any} Downloads billing.pdf
      */
     app.get('/print', (req, res) => {
-      const pdf = new PDFMaker(minaCoinData)
+      const pdf = new PDFMaker(minaCoinData);
       pdf.createPDF();
 
       return res.download('lib/pdf/billing.pdf');

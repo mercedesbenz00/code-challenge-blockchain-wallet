@@ -53,7 +53,7 @@ export class PDFMaker {
                 transaction.amount,
                 ''
             ]);
-        })
+        });
         this.definitions.content = [];
         this.definitions.content.push(content);
     }

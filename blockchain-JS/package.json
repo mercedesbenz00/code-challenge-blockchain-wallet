@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "babel source --out-dir lib --source-maps inline --copy-files",
-    "test": "grunt && jest",
+    "test": "npm run build && grunt && jest",
     "test:coverage": "jest --ci --reporters=default --coverage",
     "start": "nodemon babel-node server.js ",
     "esdoc": "node ./node_modules/.bin/esdoc"

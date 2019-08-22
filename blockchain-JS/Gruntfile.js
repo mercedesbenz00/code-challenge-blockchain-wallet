@@ -3,7 +3,7 @@ require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
     eslint: {
-        target: ['./source/**/*.js']
+        target: ['./source/**/*.js'],
     },
 });
 grunt.registerTask('default', ['eslint']);

@@ -5,11 +5,11 @@
 <h2>The latest block</h2>
 <div>
     <b>Block's timestamp:</b>
-    <%= new Date(minaCoinData.latestBlock.timestamp).toDateString() %>
+    <%= minaCoinData.latestBlock ? new Date(minaCoinData.latestBlock.timestamp).toDateString() : '' %>
 </div>
 <div>
     <b>Block's hash:</b>
-    <%= minaCoinData.latestBlock.hash %>
+    <%= minaCoinData.latestBlock ? minaCoinData.latestBlock.hash : '' %>
 </div>
 
 <% include ./partials/log-table %>
