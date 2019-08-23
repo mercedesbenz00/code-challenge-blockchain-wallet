@@ -5,4 +5,4 @@ sudo docker build . -t blockchain-code-challenge  || {
     exit 1;
     }
 
-docker run -p 3000:3000 blockchain-code-challenge /bin/sh -c 'cd /container/blockchain-JS && npm install && && npm run build && npm run test test:coverage && node server.js'
+docker run -p 3000:3000 blockchain-code-challenge /bin/sh -c 'cd /container/blockchain-JS && npm install && npm run build && npm run test:coverage && npm run start'

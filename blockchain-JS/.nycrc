@@ -1,0 +1,8 @@
+{
+  "nyc": {
+    "check-coverage": false,
+    "exclude": "./tests/",
+    "reporter": ["lcov", "text-summary"],
+    "report-dir": "./unit-test-coverage/"
+  }
+}

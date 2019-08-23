@@ -7,7 +7,7 @@ const app = express();
 
 
 // Initiating
-const {Miner} = require('./lib/components/miner')
+const {Miner} = require('./lib/components/miner');
 
 const miner = new Miner();
 miner.initTransactions();

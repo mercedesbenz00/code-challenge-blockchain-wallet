@@ -27,7 +27,7 @@ export class Miner {
     /**
      * Gets cycles from files in JSON format
      * @todo Here could be a logger
-     * @return {undefined}
+     * @return {Array} of cycles
      */
     getCycles() {
         try {

@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "build": "babel source --out-dir lib --source-maps inline --copy-files",
-    "test": "npm run build && grunt && jest",
-    "test:coverage": "jest --ci --reporters=default --coverage",
+    "test": "npm run build && grunt && jest && jasmine --config=jasmine.json",
+    "test:jestCoverage": "jest --ci --reporters=default --coverage",
+    "test:coverage": "npx nyc@latest jasmine --config=jasmine.json",
     "start": "nodemon babel-node server.js ",
     "esdoc": "node ./node_modules/.bin/esdoc"
   },
@@ -21,6 +22,9 @@
     "elliptic": "^6.5.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.4.0",
+    "nyc": "^14.1.1",
     "pdfmake": "^0.1.58"
   },
   "devDependencies": {
@@ -46,6 +50,8 @@
           "targets": {
             "esmodules": true
           }
-        }]
-    ]}
+        }
+      ]
+    ]
+  }
 }

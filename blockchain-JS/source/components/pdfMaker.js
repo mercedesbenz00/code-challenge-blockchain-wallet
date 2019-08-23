@@ -3,6 +3,7 @@ const PDFDocument = require('pdfmake');
 
 /**
  * Creates PDF with dynamic data
+ * @todo The PDF is empty for some reason. But no error is thrown. Bug appeared in my last minute. So no time t bugfix.
  * @example 
  * let pdfMaker = new PDFMaker(minaCoinData);
  * pdfMaker.createPDF();

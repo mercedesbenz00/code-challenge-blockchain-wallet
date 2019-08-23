@@ -7,17 +7,17 @@
 Check out your wallet and mine minacoins.
 
 ## Setup
-Run `npm install` inside the Blockchain-JS folder.
+Run `npm install` in ./Blockchain-JS/ inside the Blockchain-JS folder.
 
 ## Build
-Run `npm run build` to build.
+Run `npm run build` ./Blockchain-JS/ to build.
 
 ## Start
-Run `npm run start` to start.
+Run `npm run start` ./Blockchain-JS/ to start.
 
 ## Test
-Run `npm run test` to test.
-Run `npm run test:coverage` to test with coverage.
+Run `npm run test` ./Blockchain-JS/ to test.
+Run Jasmine `npm run test:coverage` ./Blockchain-JS/ to test with coverage.
 
 ## Docker
 Run `./start.sh` to start a docker container.

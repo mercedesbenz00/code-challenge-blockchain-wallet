@@ -11,3 +11,5 @@ node_modules/
 **/coverage/
 **/docs/
 **/lib/
+.nyc_output/
+unit-test-coverage/
